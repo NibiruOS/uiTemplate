@@ -1,5 +1,5 @@
 # Nibiru UI Template
-This is a template for empty [Nibiru UI](../ui) project creation.
+This is a template for empty [Nibiru UI](../../../ui) project creation.
 
 Just clone the repo and run:
 

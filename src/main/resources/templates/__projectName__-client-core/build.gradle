@@ -1,0 +1,21 @@
+apply plugin: 'java'
+
+jar {
+    from sourceSets.main.java.srcDirs
+}
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+    }
+}
+
+dependencies {
+    compile "io.github.nibiruos.ui:org.nibiru.ui.core:${nibiruUiVersion}"
+    compile "com.google.dagger:dagger:${daggerVersion}"
+    provided "com.google.dagger:dagger-compiler:${daggerVersion}"
+}

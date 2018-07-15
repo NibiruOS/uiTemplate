@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'org.multi-os-engine:moe-gradle:1.4.+'
+    }
+}
+
+apply plugin: 'moe'
+apply plugin: "net.ltgt.apt"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+test { exclude '**' }
+
+moe {
+    xcode {
+        project 'xcode/App.xcodeproj'
+        mainTarget = 'App'
+        testTarget = 'App-Test'
+    }
+}
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+    }
+}
+
+dependencies {
+    compile project(":@name@-client-core")
+    compile "io.github.nibiruos.ui:org.nibiru.ui.ios:${nibiruUiVersion}"
+    compile "io.github.nibiruos.async:org.nibiru.async.ios:${nibiruAsyncVersion}"
+    compile "com.google.dagger:dagger:${daggerVersion}"
+    apt "com.google.dagger:dagger-compiler:${daggerVersion}"
+}

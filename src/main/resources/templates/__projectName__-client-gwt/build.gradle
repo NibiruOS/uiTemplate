@@ -1,0 +1,30 @@
+apply plugin: 'java'
+apply plugin: "net.ltgt.apt"
+apply plugin: 'gwt'
+apply plugin: 'war'
+apply plugin: 'org.akhikhl.gretty'
+
+jar {
+    from sourceSets.main.java.srcDirs
+}
+
+gretty {
+    contextPath = '/@name@'
+}
+
+dependencies {
+    compile project(":@name@-client-core")
+    compile "io.github.nibiruos.ui:org.nibiru.ui.gwt:${nibiruUiVersion}";
+    compile "io.github.nibiruos.async:org.nibiru.async.gwt:${nibiruAsyncVersion}"
+    compile "com.google.dagger:dagger-gwt:${daggerVersion}"
+    apt "com.google.dagger:dagger-compiler:${daggerVersion}"
+    compile "org.ow2.asm:asm:5.0.4" // Just for GWT 2.8.0 problems with ASM 3.1
+    compile files("${buildDir}/generated/source/apt/main/")
+}
+
+gwt {
+    gwtVersion = '2.8.0'
+    modules '@packageName@.client.gwt.Module'
+    minHeapSize = "512M";
+    maxHeapSize = "8G";
+}

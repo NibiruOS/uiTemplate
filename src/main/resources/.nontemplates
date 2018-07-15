@@ -1,0 +1,13 @@
+**/*.jar
+**/*.bat
+**/*.sh
+**/*.zip
+**/*.gz
+**/*.xz
+**/*.tar
+**/*.7z
+**/*.png
+gradle/
+.gradle/
+gradlew
+gradlew.bat

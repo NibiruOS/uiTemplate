@@ -17,5 +17,5 @@ import dagger.android.AndroidInjectionModule;
         JavaModule.class
 })
 public interface @name.capitalize()@ApplicationComponent {
-    void inject(@name.capitalize()@Application posPdiApplication);
+    void inject(@name.capitalize()@Application application);
 }

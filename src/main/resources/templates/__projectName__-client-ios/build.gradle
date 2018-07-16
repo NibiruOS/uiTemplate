@@ -40,4 +40,5 @@ dependencies {
     compile "io.github.nibiruos.async:org.nibiru.async.ios:${nibiruAsyncVersion}"
     compile "com.google.dagger:dagger:${daggerVersion}"
     apt "com.google.dagger:dagger-compiler:${daggerVersion}"
+    compile files("${buildDir}/generated/source/apt/main/")
 }
